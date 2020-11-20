@@ -1,12 +1,13 @@
 {
-  "name": "minimallambda",
+  "name": "dynamoDBRecoveryTest",
   "version": "1.0.0",
-  "description": "Some what Minimal code setup needed to get a AWS Lambda up for testing something, this is not a best practice thing, just a quick thing.",
-  "main": "src/functionName.js",
+  "description": "DynamoDB Recovery Test Run",
+  "main": "src/getCakes.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint-fix": "eslint . --fix",
-    "build": "babel src -d build && npm run lint-fix"
+    "build": "babel src -d build && npm run lint-fix",
+    "start-local-services": "sam local start-api"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
