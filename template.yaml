@@ -33,3 +33,23 @@ Resources:
             RestApiId: !Ref cakesAPI
             Path: /
             Method: get
+  
+  meetBelTestTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    Properties:
+      TableName: meetBelTestTable
+      AttributeDefinitions:
+        - AttributeName: PK
+          AttributeType: S
+        - AttributeName: SK
+          AttributeType: S
+      KeySchema:
+        - AttributeName: PK
+          KeyType: HASH
+        - AttributeName: SK
+          KeyType: RANGE
+      BillingMode: PAY_PER_REQUEST
+      Tags:
+        - Key: CostCentre
+          Value: meetBelPreProdTesting
