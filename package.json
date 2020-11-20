@@ -23,14 +23,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ro5635/bareminimumJSLambda.git"
+    "url": "git+https://github.com/Ro5635/dynamoDBRecoveryTests+git"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Ro5635/bareminimumJSLambda/issues"
-  },
-  "homepage": "https://github.com/Ro5635/bareminimumJSLambda#readme",
   "dependencies": {
     "aws-sdk": "^2.596.0"
   }
