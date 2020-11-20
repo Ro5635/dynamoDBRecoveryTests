@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Resources:
 
-  someExampleAPI:
+  cakesAPI:
     Type: AWS::Serverless::Api
     Properties:
       StageName: dev
@@ -15,13 +15,13 @@ Resources:
   testFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
-      Handler: build/functionName.handler
+      Handler: build/getCakes.getCakesRestHandler
       Runtime: nodejs10.x
       CodeUri: .
       Description: >-
-        A test function
+        Get Cakes
       MemorySize: 128
-      Timeout: 60
+      Timeout: 10
       ReservedConcurrentExecutions: 10
       Environment:
         Variables:
@@ -30,6 +30,6 @@ Resources:
         Api1:
           Type: Api
           Properties:
-            RestApiId: !Ref someExampleAPI
+            RestApiId: !Ref cakesAPI
             Path: /
             Method: get
