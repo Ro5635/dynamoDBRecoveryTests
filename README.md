@@ -11,7 +11,7 @@ This project is to resolve the following questions/tasks:
 [ ] Can the default aws SSO admin role have the delete table action permission removed easily without cuasing hassle?
 
 
-These questions/tasks need to be resolved before giving the go ahead for a pile of effort to be put in loading up production with sensitive data for [meetBel](meetbel.com). We have a impending release deadline an these questions are currenly a blocker. 
+These questions/tasks need to be resolved before giving the go ahead for a pile of effort to be put in loading up production with sensitive data for [meetBel](https://meetbel.com). We have a impending release deadline an these questions are currenly a blocker. 
 
 Build and lint:
 ```
