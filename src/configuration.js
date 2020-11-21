@@ -1,6 +1,10 @@
 import aws from 'aws-sdk';
+import { newLogger } from '@travel-cloud/simple-lambda-logger';
 
-const { REGION } = process.env;
+const {
+  REGION,
+  MEETBEL_TEST_TABLE_NAME,
+} = process.env;
 const isRunningLocally = process.env.AWS_SAM_LOCAL === 'true';
 
 const corsHeaders = {
@@ -9,8 +13,12 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'content-type, Authorization',
 };
 
+const logLevel = 'DEBUG';
 const environment = {
+  MEETBEL_TEST_TABLE_NAME,
 };
+
+const logger = newLogger(logLevel);
 
 if (isRunningLocally) {
   aws.config.update({
@@ -32,4 +40,5 @@ export {
   docClient,
   corsHeaders,
   environment,
+  logger,
 };
