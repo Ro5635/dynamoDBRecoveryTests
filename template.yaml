@@ -44,9 +44,9 @@ Resources:
   getCakesFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
-      Handler: ./getCakes.getCakesRestHandler
+      Handler: ./build/getCakes.getCakesRestHandler
       Runtime: nodejs10.x
-      CodeUri: ./build/
+      CodeUri: ./service/
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !FindInMap [environmentSpecificValues, 'MOCK-ACCOUNT-ID', meetBelRecoveredTestTableName]
