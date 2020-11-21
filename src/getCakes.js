@@ -5,7 +5,7 @@ export const getCakesRestHandler = async () => {
   try {
     logger.info('GET / getCakesRestHandler Invoked');
 
-    logger.info('Attempting to gte cakes from repository');
+    logger.info('Attempting to get cakes from repository');
     const { cakeItems } = await readCakes({ pageSize: 250 });
     logger.info(`Successfully acquired cakes from repository, received cakeItems count:${cakeItems.length}`);
 

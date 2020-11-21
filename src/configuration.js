@@ -26,7 +26,7 @@ if (isRunningLocally) {
     endpoint: 'http://dynamodb:8000/',
   });
   // Provide Local versions when running locally
-  // environment.EXAMPLE_TABLE_NAME = 'exampleTableName';
+  environment.MEETBEL_TEST_TABLE_NAME = 'meetBelTestTable';
 } else {
   aws.config.update({
     region: REGION,

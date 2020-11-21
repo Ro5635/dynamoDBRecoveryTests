@@ -2,6 +2,28 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Resources:
 
+  meetBelTestTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    Properties:
+      TableName: meetBelTestTable
+      AttributeDefinitions:
+        - AttributeName: PK
+          AttributeType: S
+        - AttributeName: SK
+          AttributeType: S
+      KeySchema:
+        - AttributeName: PK
+          KeyType: HASH
+        - AttributeName: SK
+          KeyType: RANGE
+      BillingMode: PAY_PER_REQUEST
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      Tags:
+        - Key: CostCentre
+          Value: meetBelPreProdTesting
+
   cakesAPI:
     Type: AWS::Serverless::Api
     Properties:
@@ -29,6 +51,7 @@ Resources:
       Environment:
         Variables:
           NODE_ENV: dev
+          MEETBEL_TEST_TABLE_NAME: !Ref meetBelTestTable
       Events:
         Api1:
           Type: Api
@@ -36,25 +59,3 @@ Resources:
             RestApiId: !Ref cakesAPI
             Path: /
             Method: get
-  
-  meetBelTestTable:
-    Type: AWS::DynamoDB::Table
-    DeletionPolicy: Retain
-    Properties:
-      TableName: meetBelTestTable
-      AttributeDefinitions:
-        - AttributeName: PK
-          AttributeType: S
-        - AttributeName: SK
-          AttributeType: S
-      KeySchema:
-        - AttributeName: PK
-          KeyType: HASH
-        - AttributeName: SK
-          KeyType: RANGE
-      BillingMode: PAY_PER_REQUEST
-      PointInTimeRecoverySpecification:
-        PointInTimeRecoveryEnabled: true
-      Tags:
-        - Key: CostCentre
-          Value: meetBelPreProdTesting
