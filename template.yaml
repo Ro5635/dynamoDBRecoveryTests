@@ -4,8 +4,8 @@ Mappings:
   environmentSpecificValues:
     'MOCK-ACCOUNT-ID':
       environmentName: prod
-      meetBelRecoveredTestTableName: !Ref: meetBelTestTable
-#      meetBelRecoveredTestTableName: 'meetBelTestTable-recovered'
+#      meetBelRecoveredTestTableName: 'meetBelTestTable' Original table with ruined data
+      meetBelRecoveredTestTableName: 'meetBelTestTable-recovered'
 
 Resources:
 
