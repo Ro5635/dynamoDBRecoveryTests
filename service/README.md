@@ -6,7 +6,7 @@ This project is to resolve the following questions/tasks:
 
 [ ] Table DynoamoDB Backups, can these be automagicaly streamed to other accounts within an aws org without undue pain?
 
-[ ] Can a table that is defined within a cloudformation be restored and ingested into a happy CloudFormation Stack? If so What changes are need to allow us to do this?
+[/] Can a table that is defined within a cloudformation be restored and ingested into a happy CloudFormation Stack? If so What changes are need to allow us to do this?
 
 [ ] Can the default aws SSO admin role have the delete table action permission removed easily without cuasing hassle?
 
