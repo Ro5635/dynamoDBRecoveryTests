@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint-fix": "eslint . --fix",
     "build": "babel src -d build && npm run lint-fix",
-    "start-local-services": "sam local start-api"
+    "start-local-services": "sam local start-api",
+    "package": "aws cloudformation package --template-file ./template.yaml --s3-bucket robert-curran-cf-templates-meetbel --s3-prefix dynamoDBRecoveryTest  --region eu-west-2 --output-template-file ./dynamodb-recovery-test-packaged.yaml --profile robertMeetBelTest",
+    "deploy": "aws cloudformation deploy --template-file ./dynamodb-recovery-test-packaged.yaml --stack-name dynamoDBRecoveryTest --region eu-west-2 --capabilities CAPABILITY_IAM --profile robertMeetBelTest",
+    "publish": "npm run package && npm run deploy && echo Finished!!"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
@@ -28,6 +31,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@travel-cloud/simple-lambda-logger": "^2.0.3",
     "aws-sdk": "^2.596.0"
   }
 }
