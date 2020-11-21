@@ -4,11 +4,11 @@ This project is to resolve the following questions/tasks:
 
 [ ] Restore a Table from S3 in a parquet data format
 
-[ ] Table DynoamoDB Backups, can these be automagicaly streamed to other accounts within an aws org without undue pain?
+[/] Table DynoamoDB Backups, can these be automagicaly streamed to other accounts within an aws org without undue pain? {AWS Backup Service ❤️}
 
-[/] Can a table that is defined within a cloudformation be restored and ingested into a happy CloudFormation Stack? If so What changes are need to allow us to do this?
+[/] Can a table that is defined within a CloudFormation be restored and ingested into a happy CloudFormation Stack? If so What changes are need to allow us to do this?
 
-[ ] Can the default aws SSO admin role have the delete table action permission removed easily without cuasing hassle?
+[ ] Can the default aws SSO admin role have the delete table action permission removed easily without causing hassle?
 
 
 These questions/tasks need to be resolved before giving the go ahead for a pile of effort to be put in loading up production with sensitive data for [meetBel](https://meetbel.com). We have a impending release deadline an these questions are currenly a blocker. 
