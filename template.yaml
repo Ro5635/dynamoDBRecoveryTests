@@ -1,5 +1,12 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
+Mappings:
+  environmentSpecificValues:
+    'MOCK_ACCOUNT_ID':
+      environmentName: prod
+      meetBelRecoveredTestTableName: !Ref: meetBelTestTable
+#      meetBelRecoveredTestTableName: 'meetBelTestTable-recovered'
+
 Resources:
 
   meetBelTestTable:
@@ -42,7 +49,7 @@ Resources:
       CodeUri: .
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref meetBelTestTable
+            TableName: !FindInMap [environmentSpecificValues, 'MOCK_ACCOUNT_ID', meetBelRecoveredTestTableName]
       Description: >-
         Get Cakes
       MemorySize: 128
@@ -51,7 +58,7 @@ Resources:
       Environment:
         Variables:
           NODE_ENV: dev
-          MEETBEL_TEST_TABLE_NAME: !Ref meetBelTestTable
+          MEETBEL_TEST_TABLE_NAME: !FindInMap [environmentSpecificValues, 'MOCK_ACCOUNT_ID', meetBelRecoveredTestTableName]
       Events:
         Api1:
           Type: Api
