@@ -13,7 +13,7 @@ This project is to resolve the following questions/tasks:
 
 These questions/tasks need to be resolved before giving the go ahead for a pile of effort to be put in loading up production with sensitive data for [meetBel](https://meetbel.com). We have a impending release deadline an these questions are currenly a blocker. 
 
-Build and lint:
+Build and lint (in service directory):
 ```
 npm run build
 ```
