@@ -44,7 +44,7 @@ Resources:
   getCakesFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
-      Handler: ./build/getCakes.getCakesRestHandler
+      Handler: ./build/get_cakes.getCakesRestHandler
       Runtime: nodejs10.x
       CodeUri: ./service/
       Policies:
