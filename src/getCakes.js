@@ -1,6 +1,8 @@
 import { corsHeaders, logger } from './configuration';
 import readCakes from './read_cakes';
 
+const INTERNAL_SERVER_ERROR_STATUS_CODE = 500;
+
 export const getCakesRestHandler = async () => {
   try {
     logger.info('GET / getCakesRestHandler Invoked');
@@ -22,7 +24,10 @@ export const getCakesRestHandler = async () => {
     logger.error('Error caught in getCakesRestHandler');
     logger.error(error.message);
     logger.error(error.stack);
-    return error;
+    return {
+      headers: corsHeaders,
+      statusCode: INTERNAL_SERVER_ERROR_STATUS_CODE,
+    };
   }
 };
 
