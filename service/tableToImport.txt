@@ -1,0 +1,9 @@
+[
+  {
+      "ResourceType":"AWS::DynamoDB::Table",
+      "LogicalResourceId":"meetBelTestTable",
+      "ResourceIdentifier": {
+        "TableName":"meetBelTestTable-recovered"
+      }
+  }
+]
