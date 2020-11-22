@@ -31,6 +31,8 @@ Resources:
         - Key: CostCentre
           Value: meetBelPreProdTesting
 
+  # Cakes HTTP API:
+
   cakesAPI:
     Type: AWS::Serverless::Api
     Properties:
@@ -66,3 +68,46 @@ Resources:
             RestApiId: !Ref cakesAPI
             Path: /
             Method: get
+
+  # Back Up Config:
+
+  databaseBackupsPlan:
+    Type: AWS::Backup::BackupPlan
+    Properties:
+      BackupPlan:
+        BackupPlanName: cakeDatabaseBackups
+        BackupPlanRule:
+          - Lifecycle:
+              DeleteAfterDays: 35
+            RuleName: daliyBackup
+            # Daily at 5am Cron
+            ScheduleExpression: "cron(0 5 * * ? *)"
+            TargetBackupVault: Default
+
+  cakeTablesBackUpSelection:
+    Type: AWS::Backup::BackupSelection
+    Properties:
+      BackupPlanId: !Ref databaseBackupsPlan
+      BackupSelection:
+        IamRoleArn: !GetAtt backUpSystemExecutionRole.Arn
+        Resources:
+            - !GetAtt meetBelTestTable.Arn
+        SelectionName: dynamoDBTables
+
+  backUpSystemExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+            - Effect: Allow
+              Principal:
+                Service:
+                  - backup.amazonaws.com
+              Action:
+                - 'sts:AssumeRole'
+      Description: Role used by aws backup to backup
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup
+      # Role Names should be region pre-fixed. Or the world explodes!
+      RoleName: !Join [ "-", [ !Ref "AWS::Region", "backUpSystemExecutionRole" ] ]

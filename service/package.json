@@ -9,7 +9,7 @@
     "build": "node_modules/.bin/babel src -d build && npm run lint-fix",
     "start-local-services": "sam local start-api",
     "package": "aws cloudformation package --template-file ../template.yaml --s3-bucket robert-curran-cf-templates-meetbel --s3-prefix dynamoDBRecoveryTest  --region eu-west-2 --output-template-file ../dynamodb-recovery-test-packaged.yaml --profile robertMeetBelTest",
-    "deploy": "aws cloudformation deploy --template-file ../dynamodb-recovery-test-packaged.yaml --stack-name dynamoDBRecoveryTest --region eu-west-2 --capabilities CAPABILITY_IAM --profile robertMeetBelTest",
+    "deploy": "aws cloudformation deploy --template-file ../dynamodb-recovery-test-packaged.yaml --stack-name dynamoDBRecoveryTest --region eu-west-2 --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM --profile robertMeetBelTest",
     "import-resources": "aws cloudformation create-change-set --stack-name dynamoDBRecoveryTest --change-set-name ImportChangeSet5  --change-set-type IMPORT   --resources-to-import file://tableToImport.txt --template-body file://../dynamodb-recovery-test-packaged.yaml  --region eu-west-2 --capabilities CAPABILITY_IAM --profile robertMeetBelTest",
     "publish": "npm run package && npm run deploy && echo Finished!!"
   },
